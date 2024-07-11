@@ -7,22 +7,22 @@
 
 class Data
 {
-    std::vector<uint8_t> * feature_vector;
+    std::vector<uint8_t> *featureVector;
     uint8_t label;
-    int enum_label; // A -> 1 , B -> 2
+    int enumLabel; // A -> 1 , B -> 2
 
-    public:
-        void setFeatureVector(std::vector<uint8_t> *vect);
-        void appendToFeatureVector(uint8_t);
-        void setLabel(uint8_t);
-        void setEnumeratedLabel(int);
+public:
+    Data();
+    ~Data();
+    void setFeatureVector(std::vector<uint8_t> *vect);
+    void appendToFeatureVector(uint8_t);
+    void setLabel(uint8_t);
+    void setEnumeratedLabel(int);
 
-        int getFeatureVectorSize();
-        uint8_t getLabel();
-        uint8_t getEnumeratedLabel();
-        std::vector<uint8_t> * getFeatureVector();
-
-
+    int getFeatureVectorSize();
+    uint8_t getLabel();
+    int getEnumeratedLabel();
+    std::vector<uint8_t> *getFeatureVector();
 };
 
 #endif // __DATA_HPP__
