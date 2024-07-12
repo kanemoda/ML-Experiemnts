@@ -180,14 +180,3 @@ std::vector<Data *> *DataHandler::getValidationData()
 {
     return validationData;
 }
-
-int main(int argc, char const *argv[])
-{
-    DataHandler *dh = new DataHandler();
-    dh->readFeatureVector("mnist_data/train-images-idx3-ubyte");
-    dh->readFeatureLabels("mnist_data/train-labels-idx1-ubyte");
-    dh->splitData();
-    dh->countClasses();
-
-    return 0;
-}

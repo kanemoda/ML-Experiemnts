@@ -26,6 +26,11 @@ void Data::setEnumeratedLabel(int enumLabel)
     this->enumLabel = enumLabel;
 }
 
+void Data::setDistance(double val)
+{
+    this->distance = val;
+}
+
 int Data::getFeatureVectorSize()
 {
     return this->featureVector->size();
