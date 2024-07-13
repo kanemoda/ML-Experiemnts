@@ -49,7 +49,7 @@ void DataHandler::readFeatureVector(std::string path)
         }
         dataArray->push_back(d);
     }
-    std::cout << "Successfully read and stored " << dataArray->size() << "feature vectors.\n"
+    std::cout << "Successfully read and stored " << dataArray->size() << " feature vectors.\n"
               << std::endl;
 }
 
@@ -166,6 +166,11 @@ uint32_t DataHandler::convertToLittleEndian(const unsigned char *bytes)
            (static_cast<uint32_t>(bytes[1]) << 16) |
            (static_cast<uint32_t>(bytes[2]) << 8) |
            (static_cast<uint32_t>(bytes[3]));
+}
+
+int DataHandler::getClassCounts()
+{
+    return numClasses;
 }
 
 std::vector<Data *> *DataHandler::getTrainingData()
