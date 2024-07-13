@@ -17,13 +17,15 @@ fi
 
 # Convert model name to lowercase
 model_name_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+# Convert model name to uppercase for directory name
+model_name_upper=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 
 # Create necessary directories and files
-mkdir -p "$MNIST_ML_ROOT/$model_name_lower/include" "$MNIST_ML_ROOT/$model_name_lower/src"
-touch "$MNIST_ML_ROOT/$model_name_lower/Makefile"
-touch "$MNIST_ML_ROOT/$model_name_lower/include/${model_name_lower}.hpp"
-touch "$MNIST_ML_ROOT/$model_name_lower/src/${model_name_lower}.cpp"
+mkdir -p "$MNIST_ML_ROOT/$model_name_upper/include" "$MNIST_ML_ROOT/$model_name_upper/src"
+touch "$MNIST_ML_ROOT/$model_name_upper/Makefile"
+touch "$MNIST_ML_ROOT/$model_name_upper/include/${model_name_lower}.hpp"
+touch "$MNIST_ML_ROOT/$model_name_upper/src/${model_name_lower}.cpp"
 
 echo "Directories and files created successfully:"
-echo "- $MNIST_ML_ROOT/$model_name_lower/include/${model_name_lower}.hpp"
-echo "- $MNIST_ML_ROOT/$model_name_lower/src/${model_name_lower}.cpp"
+echo "- $MNIST_ML_ROOT/$model_name_upper/include/${model_name_lower}.hpp"
+echo "- $MNIST_ML_ROOT/$model_name_upper/src/${model_name_lower}.cpp"

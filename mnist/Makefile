@@ -13,19 +13,6 @@ LIBSRC = $(wildcard $(SRCDIR)/*.cpp)
 LIBOBJ = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(LIBSRC))
 LIBRARY = libmylib.a
 
-# Source files for the KNN executable
-KNNSRCDIR = KNN/src
-KNNSRC = $(wildcard $(KNNSRCDIR)/*.cpp)
-KNNOBJ = $(patsubst $(KNNSRCDIR)/%.cpp,$(OBJDIR)/%.o,$(KNNSRC))
-KNNEEXECUTABLE = knn_executable
-
-all: $(BINDIR)/$(KNNEEXECUTABLE)
-
-# Build the KNN executable
-$(BINDIR)/$(KNNEEXECUTABLE): $(KNNOBJ) $(LIBDIR)/$(LIBRARY)
-	@mkdir -p $(BINDIR)
-	$(CXX) $(CXXFLAGS) $(KNNOBJ) -o $@ -L$(LIBDIR) -lmylib
-
 # Build the library
 $(LIBDIR)/$(LIBRARY): $(LIBOBJ)
 	@mkdir -p $(LIBDIR)
@@ -36,13 +23,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Compile KNN object files
-$(OBJDIR)/%.o: $(KNNSRCDIR)/%.cpp $(DEPS)
-	@mkdir -p $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
 clean:
-	rm -rf $(OBJDIR) $(BINDIR) $(LIBDIR)
+	rm -rf $(OBJDIR) $(LIBDIR)
 
-run: $(BINDIR)/$(KNNEEXECUTABLE)
-	./$(BINDIR)/$(KNNEEXECUTABLE)
+.PHONY: clean
